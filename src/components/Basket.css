@@ -1,0 +1,31 @@
+.Basket{
+    background: #FE5F1E;
+    border-radius: 30px;
+    width: 150px;
+    height: 50px;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+}
+.Basket__price{
+font-family: 'Proxima Nova';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+color: #FFFFFF;
+}
+.Basket__line{
+    width: 1px;
+    height: 25px;
+    background-image: url("../img/line.jpg");
+}
+.Basket__sum{
+font-family: 'Proxima Nova';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+color: #FFFFFF;
+margin-left: -13px;
+}

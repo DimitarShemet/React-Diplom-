@@ -1,0 +1,27 @@
+.category{
+    background-color: #f9f9f9;
+    padding: 13px 30px;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+@media (max-width: 1000px){
+    .category{
+      width:  32%;
+      margin-right: 0;
+      margin-bottom: 16px;
+   }
+}
+@media (max-width: 650px){
+    .category{
+      width:  17%;
+   }
+}
+@media (max-width: 540px){
+    .category{
+    width: 100%;
+   }
+}
+
