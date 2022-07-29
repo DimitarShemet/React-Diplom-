@@ -1,6 +1,5 @@
 
 import React from 'react';
-import pizza1 from "../img/pizza1.png"; 
 import './Pizza.css';
 import plus from "../img/plus.svg"
 class Pizza extends React.Component{

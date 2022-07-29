@@ -7,26 +7,54 @@ import Category from "./components/Category";
 import Sort from './components/Sort';
 import Pizza from './components/Pizza';
 import categoriesJson  from './categories.json'
-import pizzaJson  from './pizza.json'
-import isoFetch from 'isomorphic-fetch';
 
-  //let data=fetch("http://localhost:3001/pizzas").then(arg=>arg.json()).then(data=>console.log(data))
+  
 
 
 class App extends React.Component{
 
-         
   state = {
     price:301,
-  //  arr1: data,
-   arr: pizzaJson['pizzas'],
-   sum:1,
-   balance:this.props.balance,
-   selectedItem:this.props.selectedItem,
-   code: this.props.code,
-    }
+    dataReady: false,
+    data: ""
+  };
+  componentDidMount() {
+    this.loadData();
+  }
+    loadData = async () =>  {
+
   
-    render(){  
+      var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+  
+      // отдельно создаём набор POST-параметров запроса
+      let sp = new URLSearchParams();
+      sp.append('f', 'READ');
+      sp.append('n', 'SHEMET_PIZZAS_REACT');
+  
+      try {
+          let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
+          let data=await response.json();
+          let dataItem=data.result
+          var obj = JSON.parse(dataItem);
+          this.setState({
+            dataReady:true,
+            data:obj,
+          });
+        
+      }
+      catch ( error ) {
+          console.error(error);
+      }
+  
+  }
+  
+  
+
+  
+    render(){     
+    if ( !this.state.dataReady )
+    return <div>загрузка данных...</div>;
+
       return  <div className="wrapper">
     <div className="inner">
       <header>
@@ -54,10 +82,15 @@ class App extends React.Component{
               </div>
               </div>
                 <div className='main__title'>Все пиццы</div>
+               
+
                 <div className='main__items'>
-                  {this.state.arr.map(elem=>(
+                  {this.state.data.map(elem=>(
                    <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes}/>
                   ) )}
+                   
+
+                   
                 </div>
     
 
