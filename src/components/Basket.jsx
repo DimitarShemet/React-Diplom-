@@ -1,7 +1,7 @@
 
 import React from 'react';
 import './Basket.css';
-class Basket extends React.PureComponent {
+class Basket extends React.Component {
 
   render() {
 

@@ -1,0 +1,16 @@
+.pizza__option .active{
+    cursor: auto;
+    background: #FFFFFF;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+border-radius: 5px;
+}
+.pizza__option ul li {
+    padding: 8px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    user-select: none;
+}

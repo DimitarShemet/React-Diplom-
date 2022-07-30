@@ -2,6 +2,8 @@
 import React from 'react';
 import './Pizza.css';
 import plus from "../img/plus.svg"
+import Dough from './Dough';
+import Size from './Size';
 class Pizza extends React.Component{
          
     state = {
@@ -10,9 +12,19 @@ class Pizza extends React.Component{
      balance:this.props.balance,
      selectedItem:this.props.selectedItem,
      code: this.props.code,
-   
+     arrDough:[{"name":"тонкое","code":1},
+     {"name":"традиционное","code":2} ],
+     size:[26,30,40],
+     newSelectedDough:1,
+     newSelectedSize:0
       }
-    
+      cbSelectedDough =(codeSelectedButton)=>{ 
+        this.setState({newSelectedDough:codeSelectedButton})
+       }
+       cbSelectedSize =(codeSelectedSize)=>{ 
+        this.setState({newSelectedSize:codeSelectedSize})
+        this.props.cbSize(codeSelectedSize)
+       }
       render(){  
         return  (
       <div className='pizza__block'>
@@ -20,15 +32,22 @@ class Pizza extends React.Component{
         <div className='pizza__title'>{this.props.name}</div>
         <div className='pizza__option'>
         <ul >
-      <li className="active">тонкое</li>
-      <li>традиционное</li>
+        {this.state.arrDough.map((elem)=>(
+    <Dough key={elem.code} dough={elem.name}  code={elem.code} cbSelected={this.cbSelectedDough} selectedButton={this.state.newSelectedDough}></Dough>
+     ))} 
     </ul>
     <ul>
-      <li className="active">{this.props.sizes[0]+" см"}</li>
-      <li>{this.props.sizes[1] +" см"}</li>
-      <li>{this.props.sizes[2]+" см"}</li>
+      {this.state.size.map((elem,index)=>(
+        <Size size={this.props.sizes} key={index} code={index} cbSelected={this.cbSelectedSize} selectedButton={this.state.newSelectedSize}/>
+      )
+      
+      )}
     </ul>
         </div>
+
+
+          
+
         <div className='pizza__footer'>
           <div className='pizza__footer__price'>{this.props.price +" ₽"}</div> 
           <div className='pizza__footer__button'>

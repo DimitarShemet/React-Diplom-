@@ -7,7 +7,6 @@ import Category from "./components/Category";
 import Sort from './components/Sort';
 import Pizza from './components/Pizza';
 import categoriesJson  from './categories.json'
-
   
 
 
@@ -16,16 +15,21 @@ class App extends React.Component{
   state = {
     price:301,
     dataReady: false,
-    data: ""
-  };
+    data: "",
+    newSelectedButton:"",
+    size:""
+  }
+  cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
+    this.setState({newSelectedButton:codeSelectedButton})
+   }
+   cbSize =(pizzaSize)=>{ 
+    this.setState({size:pizzaSize})
+   }
   componentDidMount() {
     this.loadData();
   }
     loadData = async () =>  {
-
-  
       var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
-  
       // отдельно создаём набор POST-параметров запроса
       let sp = new URLSearchParams();
       sp.append('f', 'READ');
@@ -45,16 +49,12 @@ class App extends React.Component{
       catch ( error ) {
           console.error(error);
       }
-  
   }
-  
-  
-
   
     render(){     
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
-
+  console.log(this.state.size)
       return  <div className="wrapper">
     <div className="inner">
       <header>
@@ -72,21 +72,16 @@ class App extends React.Component{
               <ul className='main__categories'>
 
                 {categoriesJson.map( (elem)=>(
-                <Category name={elem.name} key={elem.id}/>
+                <Category name={elem.name} key={elem.id} cbSelected={this.cbSelectedButton}
+                code={elem.id} selectedButton={this.state.newSelectedButton} />
                 ))}
-
               </ul>
-              <div className=' main__sort'>
-              <span className='sort__word'>Сортировка по:</span>
               <Sort/>
               </div>
-              </div>
                 <div className='main__title'>Все пиццы</div>
-               
-
                 <div className='main__items'>
                   {this.state.data.map(elem=>(
-                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes}/>
+                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbSize={this.cbSize}/>
                   ) )}
                    
 

@@ -1,0 +1,32 @@
+.pizza__option{
+    display:flex;
+    background-color:#f3f3f3;
+     border-radius:10px;
+    flex-direction:column;
+    padding:6px
+}
+.pizza__option .active{
+    cursor: auto;
+    background: #FFFFFF;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+border-radius: 5px;
+}
+.pizza__option ul{
+ display: flex;
+ justify-content: space-evenly;
+ font-weight: 700;
+ font-size: 14px;
+ line-height: 17.05px;
+ letter-spacing: 1.5%;
+ text-align: center;
+}
+.pizza__option ul li {
+    padding: 8px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    user-select: none;
+}

@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import './Sort.css';
 
 
 class Sort extends React.Component{
@@ -13,7 +14,20 @@ class Sort extends React.Component{
       }
     
       render(){  
-        return  
+        return  ( 
+          <div className=' main__sort'>
+          <span className='sort__word'>Сортировка по:</span> <span>популярности</span>
+          <div className="sort__popup">
+                <ul>
+                  <li className="active">популярности</li>
+                  <li>цене</li>
+                  <li>алфавиту</li>
+                </ul>
+              </div>
+          </div>
+     
+          
+        )
       }
       
       }
