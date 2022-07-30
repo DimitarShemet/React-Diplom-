@@ -7,7 +7,7 @@ class Basket extends React.Component {
 
     return (
         <div className="Basket">
-            <div className='Basket__price'>{this.props.price}</div><div className='Basket__line'></div> 
+            <div className='Basket__price'>{this.props.price+" ₽"}</div><div className='Basket__line'></div> 
             <svg
                 width="18"
                 height="18"

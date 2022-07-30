@@ -13,7 +13,7 @@ import categoriesJson  from './categories.json'
 class App extends React.Component{
 
   state = {
-    price:301,
+    price:"",
     dataReady: false,
     data: "",
     newSelectedButton:"",
@@ -22,8 +22,9 @@ class App extends React.Component{
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
    }
-   cbSize =(pizzaSize)=>{ 
-    this.setState({size:pizzaSize})
+  
+   cbAdd =(newPrice)=>{ 
+    this.setState({price: Number(this.state.price)+Number(newPrice)})
    }
   componentDidMount() {
     this.loadData();
@@ -81,7 +82,7 @@ class App extends React.Component{
                 <div className='main__title'>Все пиццы</div>
                 <div className='main__items'>
                   {this.state.data.map(elem=>(
-                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbSize={this.cbSize}/>
+                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd}/>
                   ) )}
                    
 

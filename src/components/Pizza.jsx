@@ -7,7 +7,7 @@ import Size from './Size';
 class Pizza extends React.Component{
          
     state = {
-     price: "520 ₽",
+     price: this.props.price ,
      sum:1,
      balance:this.props.balance,
      selectedItem:this.props.selectedItem,
@@ -18,12 +18,21 @@ class Pizza extends React.Component{
      newSelectedDough:1,
      newSelectedSize:0
       }
+      add=()=>{
+       this.props.cbAdd(this.state.price)
+
+      }
       cbSelectedDough =(codeSelectedButton)=>{ 
         this.setState({newSelectedDough:codeSelectedButton})
        }
-       cbSelectedSize =(codeSelectedSize)=>{ 
-        this.setState({newSelectedSize:codeSelectedSize})
-        this.props.cbSize(codeSelectedSize)
+       cbSelectedSize =(codeSelectedSize)=>{          
+       if(codeSelectedSize===0)               // 0-маленький размер 
+       this.setState({price:this.props.price*1})
+       if(codeSelectedSize===1)  // 1-средний размер 
+       this.setState({price: Math.floor(this.props.price*1.5)})  
+       if(codeSelectedSize===2)                   // 2-большой размер 
+       this.setState({price: Math.floor(this.props.price*2)})
+       this.setState({newSelectedSize:codeSelectedSize})   
        }
       render(){  
         return  (
@@ -49,10 +58,10 @@ class Pizza extends React.Component{
           
 
         <div className='pizza__footer'>
-          <div className='pizza__footer__price'>{this.props.price +" ₽"}</div> 
+          <div className='pizza__footer__price'>{this.state.price +" ₽"}</div> 
           <div className='pizza__footer__button'>
           <img src={plus}></img>
-      <span> Добавить</span></div> 
+      <span onClick={this.add}> Добавить</span></div> 
           
           
           </div>
