@@ -50,7 +50,7 @@ class App extends React.Component{
       this.setState({data:this.state.startData.sort(( a, b ) => a.price - b.price)})
       if(sortWord==="Спросу")
       this.setState({data:this.state.startData})
-      this.setState({sortName:sortWord})
+      this.setState({sortName:sortWord, sort:false})
    }
    sort =()=>{ 
     this.setState({sort: !this.state.sort})

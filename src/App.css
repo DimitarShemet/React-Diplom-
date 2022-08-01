@@ -76,6 +76,7 @@ cursor: pointer;
     font-weight: 600;
     font-size: 28px;
     line-height: 30px;
+    
 }
 .main__items{
     display: flex;
@@ -93,7 +94,11 @@ cursor: pointer;
     margin-right: none;
    }
    .sort__popup{
-   position: static;
+    left: 0;
+    margin-top: 2px;
+   }
+   .main__title{
+    margin-top: 110px;
    }
 }
 @media (max-width: 680px){
