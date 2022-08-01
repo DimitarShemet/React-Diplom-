@@ -37,7 +37,7 @@ class Basket extends React.Component {
                   strokeLinejoin="round"
                 />
               </svg>
-              <div className='Basket__sum'> {this.props.sum}</div>
+              <div className='Basket__sum'> {this.props.totalProducts}</div>
            </div>
     );
 

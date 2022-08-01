@@ -12,13 +12,13 @@ class Category extends React.Component{
       }
       buttonClicked=(EO)=>{
         EO.stopPropagation()
-       this.props.cbSelected(this.props.code)
+       this.props.cbSelected(this.props.code,this.props.name)
     }
     
       render(){  
         return  (
           
-      <li className='category' onClick={this.buttonClicked} style={{backgroundColor:(this.props.selectedButton===this.props.code)?'orange':'white'}}>
+      <li className='category' onClick={this.buttonClicked} style={{backgroundColor:(this.props.selectedButton===this.props.code)?'orange':'#F9F9F9'}}>
         {this.props.name}
       </li>  
         )

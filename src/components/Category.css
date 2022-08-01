@@ -1,12 +1,13 @@
-.category{
-    background-color: #f9f9f9;
+ .category{
     padding: 13px 30px;
     border-radius: 20px;
     margin-right: 10px;
     font-weight: bold;
     cursor: pointer;
+    background-color: #F9F9F9;;
     
 }
+
 @media (max-width: 1000px){
     .category{
       width:  32%;

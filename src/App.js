@@ -14,17 +14,33 @@ class App extends React.Component{
 
   state = {
     price:"",
+    totalProducts:"",
     dataReady: false,
     data: "",
+    startData:"",
     newSelectedButton:"",
-    size:""
+    size:"",
+    dough:""
   }
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
+    if(categoryName==="Все")
+    this.setState({data: this.state.startData})
+    if(categoryName==="Мясные")
+    this.setState({data: this.state.startData.filter(elem => elem.category===0)})
+    if(categoryName==="Лёгкие")
+    this.setState({data: this.state.startData.filter(elem => elem.category===1)})
+    if(categoryName==="Гриль")
+    this.setState({data: this.state.startData.filter(elem => elem.category===2)})
+    if(categoryName==="Острые")
+    this.setState({data: this.state.startData.filter(elem => elem.category===3)})
+    if(categoryName==="Новые")
+    this.setState({data: this.state.startData.filter(elem => elem.category===4)})
    }
+   
   
    cbAdd =(newPrice)=>{ 
-    this.setState({price: Number(this.state.price)+Number(newPrice)})
+    this.setState({price: Number(this.state.price)+Number(newPrice),totalProducts:Number(this.state.totalProducts)+1})
    }
   componentDidMount() {
     this.loadData();
@@ -34,7 +50,7 @@ class App extends React.Component{
       // отдельно создаём набор POST-параметров запроса
       let sp = new URLSearchParams();
       sp.append('f', 'READ');
-      sp.append('n', 'SHEMET_PIZZAS_REACT');
+      sp.append('n', 'SHEMET_REACT_PIZZAS');
   
       try {
           let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
@@ -44,6 +60,9 @@ class App extends React.Component{
           this.setState({
             dataReady:true,
             data:obj,
+            startData:obj,
+            dough:obj[0].arrDough
+            
           });
         
       }
@@ -55,7 +74,6 @@ class App extends React.Component{
     render(){     
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
-  console.log(this.state.size)
       return  <div className="wrapper">
     <div className="inner">
       <header>
@@ -66,7 +84,7 @@ class App extends React.Component{
                 <p>самая вкусная пицца во вселенной</p>
               </div>
             </div>
-            <Basket price={this.state.price} sum={this.state.sum}/>
+            <Basket price={this.state.price} totalProducts={this.state.totalProducts}/>
       </header>
       <main>
         <div className='main__top'> 
@@ -77,12 +95,12 @@ class App extends React.Component{
                 code={elem.id} selectedButton={this.state.newSelectedButton} />
                 ))}
               </ul>
-              <Sort/>
+             
               </div>
                 <div className='main__title'>Все пиццы</div>
                 <div className='main__items'>
                   {this.state.data.map(elem=>(
-                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd}/>
+                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd} dough={this.state.dough} />
                   ) )}
                    
 

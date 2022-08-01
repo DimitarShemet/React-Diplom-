@@ -80,3 +80,27 @@ border-radius: 5px;
 .pizza__footer button svg{
     margin-right: 5px;
 }
+.pizza__footer__button:hover{
+background-color: orange;
+color: white;
+border:  1px solid white;
+}
+.pizza__footer__button:hover svg path{
+    fill: white;
+}
+.productAdded{
+     position: absolute;
+      right:0;
+      writing-mode: vertical-lr;
+      animation: opaci 2s;
+      animation-fill-mode:forwards
+}
+@keyframes opaci{
+    from {
+        opacity: 0;
+    }
+   
+    to{
+        opacity: 1;
+    }
+}
