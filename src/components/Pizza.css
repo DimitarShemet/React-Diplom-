@@ -92,7 +92,7 @@ border:  1px solid white;
      position: absolute;
       right:0;
       writing-mode: vertical-lr;
-      animation: opaci 2s;
+      animation: opaci 1.5s;
       animation-fill-mode:forwards
 }
 @keyframes opaci{

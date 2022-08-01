@@ -20,7 +20,10 @@ class App extends React.Component{
     startData:"",
     newSelectedButton:"",
     size:"",
-    dough:""
+    dough:"",
+    sortArr:["Спросу","Цене"],
+    sort:false,
+    sortName:""
   }
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
@@ -42,6 +45,17 @@ class App extends React.Component{
    cbAdd =(newPrice)=>{ 
     this.setState({price: Number(this.state.price)+Number(newPrice),totalProducts:Number(this.state.totalProducts)+1})
    }
+   cbSort=(sortWord)=>{
+    if(sortWord==="Цене")
+      this.setState({data:this.state.startData.sort(( a, b ) => a.price - b.price)})
+      if(sortWord==="Спросу")
+      this.setState({data:this.state.startData})
+      this.setState({sortName:sortWord})
+   }
+   sort =()=>{ 
+    this.setState({sort: !this.state.sort})
+   }
+
   componentDidMount() {
     this.loadData();
   }
@@ -72,6 +86,7 @@ class App extends React.Component{
   }
   
     render(){     
+      console.log(this.state.startData)
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
       return  <div className="wrapper">
@@ -95,7 +110,16 @@ class App extends React.Component{
                 code={elem.id} selectedButton={this.state.newSelectedButton} />
                 ))}
               </ul>
-             
+              <div className=' main__sort'>
+          <span className='sort__word' onClick={this.sort}>Сортировка по:</span> <span style={{color: "orange",borderBottom: 1+"px "+ "dashed " +"#FE5F1E"}}>{this.state.sortName}</span>
+          <div className="sort__popup" style={{boxShadow:!this.state.sort?"none":""}}>
+                <ul>
+              {this.state.sortArr.map((elem,index)=>(
+               <Sort  key={index }name={elem} cbSort={this.cbSort} valueSort={this.state.sort}></Sort>
+              ))}
+              </ul>
+              </div>
+             </div>
               </div>
                 <div className='main__title'>Все пиццы</div>
                 <div className='main__items'>

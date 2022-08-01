@@ -65,9 +65,11 @@ font-size: 14px;
 line-height: 17px;
 letter-spacing: 0.015em;
 color: #2C2C2C;
+cursor: pointer;
 }
 .main__sort{
     margin-top: 50px;
+    position: relative;
 }
 .main__title{
     margin: 35px 0;
@@ -80,6 +82,7 @@ color: #2C2C2C;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.sort__popup{position:absolute;right:0;margin-top:15px;background:#ffffff; box-shadow:0px 5px 15px rgba(0,0,0,0.09);border-radius:10px;overflow:hidden;padding:10px 0;width:160px}.sort__popup ul{overflow:hidden}.sort__popup ul li{padding:12px 20px;cursor:pointer}.sort__popup ul li.active,.sort__popup ul li:hover{background:rgba(254,95,30,0.05)}.sort__popup ul li.active{font-weight:bold;color:#fe5f1e}
 @media (max-width: 1100px){
     main .main__top{
       display: block;
@@ -88,6 +91,9 @@ color: #2C2C2C;
     flex-wrap: wrap;
     text-align: center;
     margin-right: none;
+   }
+   .sort__popup{
+   position: static;
    }
 }
 @media (max-width: 680px){

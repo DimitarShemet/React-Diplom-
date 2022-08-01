@@ -1,29 +1,26 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import './Sort.css';
 
 
 class Sort extends React.Component{
          
     state = {
-     price: "520 ₽",
-     sum:1,
-     balance:this.props.balance,
-     selectedItem:this.props.selectedItem,
-     code: this.props.code,
+     sort:""
    
       }
-    
+      sort=()=>{ 
+       this.props.cbSort(this.props.name)
+       }
       render(){  
         return  ( 
-          <div className=' main__sort'>
-          <span className='sort__word'>Сортировка</span> <span></span>
-          <div className="sort__popup">
-                <ul>
-                  <li className="active">популярности</li>
-                  <li>цене</li>
-                </ul>
-              </div>
-          </div>
+        <Fragment>
+          {this.props.valueSort?  
+          <li onClick={this.sort} >{this.props.name}</li>:""}
+        </Fragment>
+               
+                  
+              
+             
      
           
         )
