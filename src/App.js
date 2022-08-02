@@ -21,24 +21,38 @@ class App extends React.Component{
     newSelectedButton:"",
     size:"",
     dough:"",
-    sortArr:["Спросу","Цене"],
+    sortArr:"",
     sort:false,
-    sortName:""
+    sortName:"",
+    dataForSort:"",
+    categoryName:""
   }
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
     if(categoryName==="Все")
-    this.setState({data: this.state.startData})
-    if(categoryName==="Мясные")
-    this.setState({data: this.state.startData.filter(elem => elem.category===0)})
-    if(categoryName==="Лёгкие")
-    this.setState({data: this.state.startData.filter(elem => elem.category===1)})
-    if(categoryName==="Гриль")
-    this.setState({data: this.state.startData.filter(elem => elem.category===2)})
-    if(categoryName==="Острые")
-    this.setState({data: this.state.startData.filter(elem => elem.category===3)})
-    if(categoryName==="Новые")
-    this.setState({data: this.state.startData.filter(elem => elem.category===4)})
+    this.setState({data: this.state.startData,dataForSort:""})
+    if(categoryName==="Мясные"){
+      let data=this.state.startData.filter(elem => elem.category===0)
+    this.setState({data:data, dataForSort:data,categoryName:categoryName})
+    }
+    if(categoryName==="Лёгкие"){
+      let data=this.state.startData.filter(elem => elem.category===1)
+    this.setState({data: data, dataForSort:data,categoryName:categoryName})
+    }
+    if(categoryName==="Гриль"){
+      let data=this.state.startData.filter(elem => elem.category===2)
+    this.setState({data:data,dataForSort:data,categoryName:categoryName})
+    }
+    if(categoryName==="Острые"){
+      let data=this.state.startData.filter(elem => elem.category===3)
+    this.setState({data: data, dataForSort:data,categoryName:categoryName})
+
+    }
+    if(categoryName==="Новые"){
+      let data=this.state.startData.filter(elem => elem.category===4)
+    this.setState({data: data, dataForSort:data,categoryName:categoryName})
+    }
+    this.setState({sortName:"", sort:false})
    }
    
   
@@ -46,13 +60,21 @@ class App extends React.Component{
     this.setState({price: Number(this.state.price)+Number(newPrice),totalProducts:Number(this.state.totalProducts)+1})
    }
    cbSort=(sortWord)=>{
-    if(sortWord==="Цене")
-      this.setState({data:this.state.startData.sort(( a, b ) => a.price - b.price)})
-      if(sortWord==="Спросу")
-      this.setState({data:this.state.startData})
+    if(sortWord==="Цене"){
+      if(!this.state.dataForSort)
+      this.setState({data:this.state.startData.concat().sort(( a, b ) => a.price - b.price)})
+      else
+      this.setState({data:this.state.dataForSort.sort(( a, b ) => a.price - b.price)})
+    }
+    if(sortWord==="Спросу"){
+      if(!this.state.dataForSort)
+      this.setState({data:this.state.startData.concat().sort(( a, b ) => a.rating - b.rating)})
+      else
+      this.setState({data:this.state.dataForSort.sort(( a, b ) => a.rating - b.rating)})
+    }
       this.setState({sortName:sortWord, sort:false})
    }
-   sort =()=>{ 
+   sortShow =()=>{ 
     this.setState({sort: !this.state.sort})
    }
 
@@ -64,29 +86,21 @@ class App extends React.Component{
       // отдельно создаём набор POST-параметров запроса
       let sp = new URLSearchParams();
       sp.append('f', 'READ');
-      sp.append('n', 'SHEMET_REACT_PIZZAS');
+      sp.append('n', 'SHEMET_DZMITRY_JSON');
   
       try {
           let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
           let data=await response.json();
           let dataItem=data.result
           var obj = JSON.parse(dataItem);
-          this.setState({
-            dataReady:true,
-            data:obj,
-            startData:obj,
-            dough:obj[0].arrDough
-            
+          this.setState({  dataReady:true, data:obj, startData:obj, dough:obj[0].arrDough, sortArr:obj[0].sortArr    
           });
-        
       }
       catch ( error ) {
           console.error(error);
       }
   }
-  
     render(){     
-      console.log(this.state.startData)
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
       return  <div className="wrapper">
@@ -111,11 +125,12 @@ class App extends React.Component{
                 ))}
               </ul>
               <div className=' main__sort'>
-          <span className='sort__word' onClick={this.sort}>Сортировка по:</span> <span style={{color: "orange",borderBottom: 1+"px "+ "dashed " +"#FE5F1E"}}>{this.state.sortName}</span>
+          <span className='sort__word' onClick={this.sortShow}>Сортировка по:</span> 
+          <span onClick={this.sortShow} style={{color: "orange", borderBottom: 1+"px "+ "dashed " +"#FE5F1E", cursor:"pointer",marginLeft:7}}>{this.state.sortName}</span>
           <div className="sort__popup" style={{boxShadow:!this.state.sort?"none":""}}>
                 <ul>
               {this.state.sortArr.map((elem,index)=>(
-               <Sort  key={index }name={elem} cbSort={this.cbSort} valueSort={this.state.sort}></Sort>
+               <Sort  key={index }name={elem} cbSort={this.cbSort} valueSort={this.state.sort} ></Sort>
               ))}
               </ul>
               </div>
@@ -124,19 +139,12 @@ class App extends React.Component{
                 <div className='main__title'>Все пиццы</div>
                 <div className='main__items'>
                   {this.state.data.map(elem=>(
-                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd} dough={this.state.dough} />
+                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd} dough={this.state.dough} rating={elem.rating} />
                   ) )}
-                   
-
-                   
                 </div>
-    
-
       </main>
     </div>
     </div> 
-  
-
     }
     
     }

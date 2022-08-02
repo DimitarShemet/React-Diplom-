@@ -10,12 +10,13 @@ class Sort extends React.Component{
       }
       sort=()=>{ 
        this.props.cbSort(this.props.name)
+       
        }
       render(){  
         return  ( 
         <Fragment>
           {this.props.valueSort?  
-          <li onClick={this.sort} >{this.props.name}</li>:""}
+          <li onClick={this.sort}  >{this.props.name}</li>:""}
         </Fragment>
                
                   
