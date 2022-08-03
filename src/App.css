@@ -83,6 +83,11 @@ cursor: pointer;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+a{
+  color: black;
+ text-decoration: none;
+
+}
 .sort__popup{position:absolute;right:0;margin-top:15px;background:#ffffff; box-shadow:0px 5px 15px rgba(0,0,0,0.09);border-radius:10px;overflow:hidden;padding:10px 0;width:160px}.sort__popup ul{overflow:hidden}.sort__popup ul li{padding:12px 20px;cursor:pointer}.sort__popup ul li.active,.sort__popup ul li:hover{background:rgba(254,95,30,0.05)}.sort__popup ul li.active{font-weight:bold;color:#fe5f1e}
 @media (max-width: 1100px){
     main .main__top{

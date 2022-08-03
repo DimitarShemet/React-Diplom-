@@ -1,0 +1,8 @@
+.PageLink {
+    color: black;
+}
+
+.ActivePageLink {
+    color: black;
+    text-decoration: none;
+}

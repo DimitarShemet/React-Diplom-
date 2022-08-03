@@ -7,6 +7,7 @@ import Category from "./components/Category";
 import Sort from './components/Sort';
 import Pizza from './components/Pizza';
 import categoriesJson  from './categories.json'
+import { NavLink } from 'react-router-dom';
   
 
 
@@ -93,8 +94,7 @@ class App extends React.Component{
           let data=await response.json();
           let dataItem=data.result
           var obj = JSON.parse(dataItem);
-          this.setState({  dataReady:true, data:obj, startData:obj, dough:obj[0].arrDough, sortArr:obj[0].sortArr    
-          });
+          this.setState({dataReady:true, data:obj, startData:obj, dough:obj[0].arrDough, sortArr:obj[0].sortArr});
       }
       catch ( error ) {
           console.error(error);
@@ -106,6 +106,7 @@ class App extends React.Component{
       return  <div className="wrapper">
     <div className="inner">
       <header>
+      <NavLink to="/">
           <div className={"header__logo"}>
             <img width="38" height="43" src={logo} />
               <div className='header__title'>
@@ -113,7 +114,10 @@ class App extends React.Component{
                 <p>самая вкусная пицца во вселенной</p>
               </div>
             </div>
+            </NavLink>
+            <NavLink to="/basket">
             <Basket price={this.state.price} totalProducts={this.state.totalProducts}/>
+            </NavLink>
       </header>
       <main>
         <div className='main__top'> 
