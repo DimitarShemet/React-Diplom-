@@ -26,7 +26,6 @@ class intApp extends React.Component{
     sortName:"",
     dataForSort:"",
     categoryName:"",
-    reduxData:{}
   }
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
@@ -144,7 +143,7 @@ class intApp extends React.Component{
                 <div className='main__title'>Все пиццы</div>
                 <div className='main__items'>
                   {this.state.data.map(elem=>(
-                   <Pizza name={elem.name} key={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd} dough={this.state.dough} rating={elem.rating} />
+                   <Pizza name={elem.name} key={elem.id} id={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes} cbAdd={this.cbAdd} dough={this.state.dough} rating={elem.rating} />
                   ) )}
                 </div>
       </main>

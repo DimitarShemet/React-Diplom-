@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import logo from "../img/logo.jpg"; 
 import './Page_Basket.css';
 import {connect} from 'react-redux';
+import Pizza_Item from '../components/Pizza_Item';
+import basket from '../img/basket.svg';
+import del from '../img/delete.svg';
+
 
 
 class intPage_Basket extends React.PureComponent {
@@ -23,10 +27,21 @@ console.log(this.props.dataPizza)
               </div>
               </NavLink>
         </header>
-        <main>
-         {/* {this.props.dataPizza.map(pizza=>(
+        <main className="basket_main">
+      <div className="basket_main_header">
+        <div className='basket_main_header_left'>
+        <img src={basket}/>
+        <h1 >Корзина</h1>
+        </div>
+        <div className="basket_main_header_right">
+      <img width={20} height={20} src={del}/>
+      <p>Очистить корзину</p>
+      </div>
+      </div>
+        {this.props.dataPizza.map(elem=>(
+          <Pizza_Item  key={elem.id} name={elem.pizza}  img={elem.img} price={elem.price}  dough={elem.dough} size={elem.size}/>
           
-         ))} */}
+         ))} 
         </main>
         </div>
         </div>

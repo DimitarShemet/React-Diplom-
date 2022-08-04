@@ -20,7 +20,7 @@ class Pizza extends React.Component{
    
       
       add=()=>{
-       this.props.cbAdd(this.state.price,{pizza:this.props.name,img:this.props.url, price:this.state.price,dough:this.state.newSelectedDough,size:this.state.newSelectedSize})
+       this.props.cbAdd(this.state.price,{pizza:this.props.name,img:this.props.url, price:this.state.price,dough:this.state.newSelectedDough,size:this.state.newSelectedSize,id:this.props.id})
        this.setState({productAdded:true})
 
       }
