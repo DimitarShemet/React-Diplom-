@@ -8,10 +8,9 @@ import Sort from './components/Sort';
 import Pizza from './components/Pizza';
 import categoriesJson  from './categories.json'
 import { NavLink } from 'react-router-dom';
+import {connect} from 'react-redux';
   
-
-
-class App extends React.Component{
+class intApp extends React.Component{
 
   state = {
     price:"",
@@ -26,7 +25,8 @@ class App extends React.Component{
     sort:false,
     sortName:"",
     dataForSort:"",
-    categoryName:""
+    categoryName:"",
+    reduxData:{}
   }
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
@@ -55,10 +55,11 @@ class App extends React.Component{
     }
     this.setState({sortName:"", sort:false})
    }
-   
+ 
   
-   cbAdd =(newPrice)=>{ 
+   cbAdd =(newPrice, newReduxObject)=>{ 
     this.setState({price: Number(this.state.price)+Number(newPrice),totalProducts:Number(this.state.totalProducts)+1})
+    this.props.dispatch( { type:"ADD", data:newReduxObject });
    }
    cbSort=(sortWord)=>{
     if(sortWord==="Цене"){
@@ -150,11 +151,14 @@ class App extends React.Component{
     </div>
     </div> 
     }
-    
     }
-    
+    const mapStateToProps = function (state) {
+      // этому компоненту ничего не нужно из хранилища Redux
+      return { }; 
+    };
+    const App = connect (mapStateToProps)(intApp);
     export default App
-    
+
 
 
 

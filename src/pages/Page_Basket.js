@@ -2,12 +2,13 @@ import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from "../img/logo.jpg"; 
 import './Page_Basket.css';
+import {connect} from 'react-redux';
 
 
-class Page_Basket extends React.PureComponent {
+class intPage_Basket extends React.PureComponent {
           
   render() {
-
+console.log(this.props.dataPizza)
     return (
       <div className="wrapper">
       <div className="inner">
@@ -22,6 +23,11 @@ class Page_Basket extends React.PureComponent {
               </div>
               </NavLink>
         </header>
+        <main>
+         {/* {this.props.dataPizza.map(pizza=>(
+          
+         ))} */}
+        </main>
         </div>
         </div>
     
@@ -30,6 +36,15 @@ class Page_Basket extends React.PureComponent {
   }
 
 }
-    
+const mapStateToProps = function (state) {
+  return {
+    // из раздела Redux с именем dataPizza свойство dataPizza будет доступно
+    // данному компоненту как this.props.dataPizza
+    dataPizza: state.dataPizza.dataPizza,
+  };
+};
+
+// присоединяем (connect) компонент к хранилищу Redux
+const Page_Basket = connect(mapStateToProps)(intPage_Basket);
 export default Page_Basket;
     
