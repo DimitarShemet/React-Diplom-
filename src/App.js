@@ -26,6 +26,7 @@ class intApp extends React.Component{
     sortName:"",
     dataForSort:"",
     categoryName:"",
+    currentPizzaData:""
   }
   cbSelectedButton =(codeSelectedButton,categoryName)=>{ 
     this.setState({newSelectedButton:codeSelectedButton})
@@ -56,9 +57,10 @@ class intApp extends React.Component{
    }
  
   
-   cbAdd =(newPrice, newReduxObject)=>{ 
-    this.setState({price: Number(this.state.price)+Number(newPrice),totalProducts:Number(this.state.totalProducts)+1})
+   cbAdd =( newReduxObject)=>{ 
+    this.setState({currentPizzaData:newReduxObject})
     this.props.dispatch( { type:"ADD", data:newReduxObject });
+    // this.props.dispatch( { type:"STARTBASKETUPDATE", data:newReduxObject })
    }
    cbSort=(sortWord)=>{
     if(sortWord==="Цене"){
@@ -87,7 +89,7 @@ class intApp extends React.Component{
       // отдельно создаём набор POST-параметров запроса
       let sp = new URLSearchParams();
       sp.append('f', 'READ');
-      sp.append('n', 'SHEMET_DZMITRY_JSON');
+      sp.append('n', 'SHEMET_DZMITRY_ARR');
   
       try {
           let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
@@ -103,6 +105,8 @@ class intApp extends React.Component{
     render(){     
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
+    console.log("render");
+    
       return  <div className="wrapper">
     <div className="inner">
       <header>
@@ -116,7 +120,7 @@ class intApp extends React.Component{
             </div>
             </NavLink>
             <NavLink to="/basket">
-            <Basket price={this.state.price} totalProducts={this.state.totalProducts}/>
+            <Basket price={this.props.startBasket.startPrice} totalProducts={this.props.startBasket.numberProducts}/>
             </NavLink>
       </header>
       <main>
@@ -153,7 +157,9 @@ class intApp extends React.Component{
     }
     const mapStateToProps = function (state) {
       // этому компоненту ничего не нужно из хранилища Redux
-      return { }; 
+      return { 
+        startBasket: state.dataPizza.startBasket,
+      }; 
     };
     const App = connect (mapStateToProps)(intApp);
     export default App

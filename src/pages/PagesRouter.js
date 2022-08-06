@@ -5,9 +5,11 @@ import App from '../App';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import dataPizzaReducer from "./dataPizzaReducer";
+import startBasketReducer from "./startBasketReducer"
 let combinedReducer=combineReducers({
   // редьюсер dataBasketReducer отвечает за раздел state под именем dataPizza
   dataPizza: dataPizzaReducer, 
+  startBasket:startBasketReducer,
   // + другие редьюсеры
 });
 let store=createStore(combinedReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

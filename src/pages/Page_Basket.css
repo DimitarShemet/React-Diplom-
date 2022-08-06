@@ -49,10 +49,11 @@ header{
 .header__logo p {
     color: #7b7b7b;
 }
-.basket_main{
+.content{
     margin: 90px auto;
     max-width: 820px;
 }
+
 .basket_main_header{
     display: flex;
     justify-content: space-between;
@@ -79,4 +80,29 @@ font-size: 16px;
 line-height: 19px;
 color: #B6B6B6;
 align-items: center;
+cursor: pointer;
+}
+.basket_footer{
+    margin: 50px 0;
+    margin: 90px auto;
+    max-width: 820px;
+    margin-top: 40px;
+}
+.basket_footer_data{
+    display: flex;
+    justify-content: space-between;
+
+}
+.basket_footer_data p{
+    font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 27px;
+color: #000000;
+}
+.basket_footer_data span{
+    font-weight: bold;
+}
+.basket_footer_data_price{
+    color: #FE5F1E;
 }

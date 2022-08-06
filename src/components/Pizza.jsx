@@ -20,12 +20,14 @@ class Pizza extends React.Component{
    
       
       add=()=>{
-       this.props.cbAdd(this.state.price,{pizza:this.props.name,img:this.props.url, price:this.state.price,dough:this.state.newSelectedDough,size:this.state.newSelectedSize,id:this.props.id})
+       this.props.cbAdd({pizza:this.props.name,img:this.props.url, price:this.state.price,dough:this.state.newSelectedDough,size:this.state.newSelectedSize,id:this.props.id*this.state.price*this.state.newSelectedDough})
+       console.log(this.props.id*this.state.price*this.state.newSelectedDough)
        this.setState({productAdded:true})
 
       }
       cbSelectedDough =(codeSelectedButton)=>{ 
         this.setState({newSelectedDough:codeSelectedButton, productAdded:false})
+        console.log(codeSelectedButton)
        }
        cbSelectedSize =(codeSelectedSize)=>{          
        if(codeSelectedSize===0)               // 0-маленький размер 
@@ -57,10 +59,6 @@ class Pizza extends React.Component{
       )}
     </ul>
         </div>
-
-
-          
-
         <div className='pizza__footer'>
           <div className='pizza__footer__price'>{this.state.price +" ₽"}</div> 
           <div className='pizza__footer__button' onClick={this.add}>
@@ -70,9 +68,6 @@ class Pizza extends React.Component{
          <span > Добавить</span></div> 
         </div>
       </div>
-        
-      
-      
       )
       }
       

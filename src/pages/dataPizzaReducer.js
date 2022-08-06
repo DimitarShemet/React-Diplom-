@@ -1,5 +1,8 @@
 ﻿const initState={
   dataPizza: [],
+  startBasket:{
+  startPrice: 0,
+  numberProducts:""}
 };
 
 // в редьюсере state - это не весь state Redux, а только тот раздел state,
@@ -10,15 +13,33 @@ function dataPizzaReducer(state=initState,action) {
   switch (action.type) {
 
     case "ADD": {
-      console.log(action.data)
-      // хотелось бы просто увеличить state.cnt
-      // но редьюсер ВСЕГДА должен возвращаеть новый state а не изменять старый!
-      console.log('state до обработки редьюсером:',state);
       let newState={...state};
       newState.dataPizza.push(action.data);
-      console.log('state после обработки редьюсером:',newState);
+      let currentPrice=Number(newState.startBasket.startPrice)
+      currentPrice+=Number(action.data.price)
+      newState.startBasket.startPrice=currentPrice
+       newState.startBasket.numberProducts=newState.dataPizza.length
       return newState;
     }
+    case "DEL": {
+      let newState={...state};
+     newState.dataPizza.length=0
+     newState.startBasket.startPrice=""
+     newState.startBasket.numberProducts=""
+      return newState;
+    }
+    case "DELETEITEM": {
+      console.log(action.deleteId)
+      let newState={...state};
+       let filter= newState.dataPizza.filter(elem=>elem.id!==action.deleteId)
+       newState.dataPizza=filter
+       let currentPrice=Number(newState.startBasket.startPrice)
+       currentPrice-=Number(action.deletePrice)
+        newState.startBasket.startPrice=currentPrice
+        newState.startBasket.numberProducts--
+      return newState;
+    }
+    
     
     default:
       return state;
