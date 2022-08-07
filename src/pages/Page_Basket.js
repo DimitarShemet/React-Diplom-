@@ -49,7 +49,7 @@ state = {
       </div>
       </div>
         {this.props.dataPizza.map(elem=>(
-          <Pizza_Item   key={elem.id*elem.price} id={elem.id} name={elem.pizza}  img={elem.img} price={elem.price}  dough={elem.dough} size={elem.size} cbDeleteItem={this.cbDeleteItem}/>
+          <Pizza_Item   number={elem.numberSelectedPizza} key={elem.id*elem.price} id={elem.id} name={elem.pizza}  img={elem.img} price={elem.price}  dough={elem.dough} size={elem.size} cbDeleteItem={this.cbDeleteItem}/>
           
          ))} 
         </main>

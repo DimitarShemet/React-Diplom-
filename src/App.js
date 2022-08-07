@@ -9,6 +9,7 @@ import Pizza from './components/Pizza';
 import categoriesJson  from './categories.json'
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux';
+
   
 class intApp extends React.Component{
 
@@ -58,6 +59,7 @@ class intApp extends React.Component{
  
   
    cbAdd =( newReduxObject)=>{ 
+
     this.setState({currentPizzaData:newReduxObject})
     this.props.dispatch( { type:"ADD", data:newReduxObject });
     // this.props.dispatch( { type:"STARTBASKETUPDATE", data:newReduxObject })
@@ -105,8 +107,6 @@ class intApp extends React.Component{
     render(){     
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
-    console.log("render");
-    
       return  <div className="wrapper">
     <div className="inner">
       <header>

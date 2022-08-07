@@ -27,6 +27,7 @@ class Pizza_Item extends React.Component{
             </div>
          </div>
          <div className='pizza_item_number'>
+          {this.props.number}
          </div>
          <div className='pizza_item_price'>
            {this.props.price+" ₽"}

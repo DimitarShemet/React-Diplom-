@@ -13,13 +13,24 @@ function dataPizzaReducer(state=initState,action) {
   switch (action.type) {
 
     case "ADD": {
+
       let newState={...state};
-      newState.dataPizza.push(action.data);
       let currentPrice=Number(newState.startBasket.startPrice)
       currentPrice+=Number(action.data.price)
       newState.startBasket.startPrice=currentPrice
-       newState.startBasket.numberProducts=newState.dataPizza.length
-
+       newState.startBasket.numberProducts++
+      //  if(newState.dataPizza.find(elem => elem.id === action.data.id)){
+      //   console.log(newState.dataPizza.elem)
+      //  return newState
+      //  }
+      //   else
+      let index = newState.dataPizza.findIndex((elem) => elem.id === action.data.id);
+      console.log(index)
+       if(index>=0){
+       newState.dataPizza[index]=action.data 
+       }
+       else
+       newState.dataPizza.push(action.data)
       return newState;
     }
     case "DEL": {
