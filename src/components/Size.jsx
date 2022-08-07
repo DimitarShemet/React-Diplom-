@@ -11,8 +11,7 @@ class Size extends React.Component{
       buttonSizeClicked=(EO)=>{
         EO.stopPropagation()
         this.props.cbSelected(this.props.code)
-        
-      
+        this.props.cbSelectedPizza(false)
     }
     
       render(){  

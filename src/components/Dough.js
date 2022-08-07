@@ -11,8 +11,7 @@ class Dough extends React.Component{
       buttonDoughClicked=(EO)=>{
         EO.stopPropagation()
         this.props.cbSelected(this.props.code)
-        
-      
+        this.props.cbSelectedPizza(false)
     }
     
       render(){  

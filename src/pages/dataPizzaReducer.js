@@ -19,6 +19,7 @@ function dataPizzaReducer(state=initState,action) {
       currentPrice+=Number(action.data.price)
       newState.startBasket.startPrice=currentPrice
        newState.startBasket.numberProducts=newState.dataPizza.length
+
       return newState;
     }
     case "DEL": {
