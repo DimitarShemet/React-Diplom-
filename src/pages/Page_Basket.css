@@ -106,3 +106,12 @@ color: #000000;
 .basket_footer_data_price{
     color: #FE5F1E;
 }
+.basket_main_header_right:hover{
+    transition: all .15s ease-in-out;
+    color: #000000;
+}
+.basket_main_header_right:hover svg path{
+    transition: all .15s ease-in-out;
+    stroke:#000000
+    
+}

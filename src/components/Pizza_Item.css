@@ -37,7 +37,11 @@ margin-right: 15px;
     width: 100px;
     height: 70px;
     justify-content: space-between;
-    background-color: #8D8D8D;
+    color:orange;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    align-items: center;
 }
 .pizza_item_price{
     font-family: 'Proxima Nova';

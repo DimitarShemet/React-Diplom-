@@ -12,9 +12,10 @@ function dataPizzaReducer(state=initState,action) {
 
   switch (action.type) {
 
-    case "ADD": {
-
+case "ADD": {
+  
       let newState={...state};
+      console.log(newState.dataPizza)
       let currentPrice=Number(newState.startBasket.startPrice)
       currentPrice+=Number(action.data.price)
       newState.startBasket.startPrice=currentPrice
@@ -24,10 +25,14 @@ function dataPizzaReducer(state=initState,action) {
       //  return newState
       //  }
       //   else
+      let startPrice=action.data.price
       let index = newState.dataPizza.findIndex((elem) => elem.id === action.data.id);
       console.log(index)
        if(index>=0){
-       newState.dataPizza[index]=action.data 
+       newState.dataPizza[index].numberSelectedPizza++ 
+        let currentPrice=startPrice*newState.dataPizza[index].numberSelectedPizza  //Получаем итоговую цену за n кол-во пицц
+        newState.dataPizza[index].price=currentPrice
+      
        }
        else
        newState.dataPizza.push(action.data)
@@ -41,14 +46,14 @@ function dataPizzaReducer(state=initState,action) {
       return newState;
     }
     case "DELETEITEM": {
-      console.log(action.deleteId)
       let newState={...state};
-       let filter= newState.dataPizza.filter(elem=>elem.id!==action.deleteId)
+      let index = newState.dataPizza.findIndex((elem) => elem.id === action.deleteId);
+      newState.startBasket.numberProducts-=newState.dataPizza[index].numberSelectedPizza         //Убираем кол-во пицц
+       let filter= newState.dataPizza.filter(elem=>elem.id!==action.deleteId)                      // Фильтруем массив 
        newState.dataPizza=filter
-       let currentPrice=Number(newState.startBasket.startPrice)
-       currentPrice-=Number(action.deletePrice)
+       let startPrice=Number(newState.startBasket.startPrice)                                        // Ставим новую цену
+        let currentPrice=startPrice-Number(action.deletePrice)                                   
         newState.startBasket.startPrice=currentPrice
-        newState.startBasket.numberProducts--
       return newState;
     }
     

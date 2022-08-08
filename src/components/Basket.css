@@ -1,11 +1,15 @@
 .Basket{
-    background: #FE5F1E;
+    background-color: #FE5F1E;
     border-radius: 30px;
     width: 150px;
     height: 50px;
      display: flex;
      align-items: center;
      justify-content: space-evenly;
+}
+.Basket:hover{
+    background-color: #f24500;
+    transition: background-color .15s ease-in-out
 }
 .Basket__price{
 font-family: 'Proxima Nova';
@@ -29,3 +33,4 @@ line-height: 19px;
 color: #FFFFFF;
 margin-left: -13px;
 }
+
