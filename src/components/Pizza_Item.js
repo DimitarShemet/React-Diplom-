@@ -13,7 +13,6 @@ class Pizza_Item extends React.Component{
      deleteItem=()=>{
       this.props.cbDeleteItem(this.props.id,this.props.price)
      }
-    
       render(){ 
         return  (
       <div className='pizza_item'>

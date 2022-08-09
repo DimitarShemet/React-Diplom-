@@ -5,6 +5,7 @@ import './Page_Basket.css';
 import {connect} from 'react-redux';
 import Pizza_Item from '../components/Pizza_Item';
 import basket from '../img/basket.svg';
+import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
 class intPage_Basket extends React.Component {
 state = {
@@ -45,12 +46,7 @@ catch ( error ) {
 }
 
 }
-
-  
-  
-  
   render() {
-    console.log("render");
     return (
       <div className="wrapper">
       <div className="inner">
@@ -82,10 +78,17 @@ catch ( error ) {
       <p className='basket_main_header_right_delete' >Очистить корзину</p>
       </div>
       </div>
-        {this.props.dataPizza.map(elem=>(
-          <Pizza_Item   number={elem.numberSelectedPizza} key={elem.id*elem.price} id={elem.id} name={elem.pizza}  img={elem.img} price={elem.price}  dough={elem.dough} size={elem.size} cbDeleteItem={this.cbDeleteItem}/>
-          
+      <TransitionGroup>
+        {this.props.dataPizza.map((elem,index)=>(
+           <CSSTransition
+           key={elem.id}
+           timeout={500}
+           classNames="item"
+         >
+          <Pizza_Item    number={elem.numberSelectedPizza} key={elem.id*elem.price} id={elem.id} name={elem.pizza}  img={elem.img} price={elem.price}  dough={elem.dough} size={elem.size} cbDeleteItem={this.cbDeleteItem}/>
+         </CSSTransition>
          ))} 
+         </TransitionGroup>
         </main>
         <footer className='basket_footer'>
         <div className='basket_footer_data'>
