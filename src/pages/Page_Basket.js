@@ -19,6 +19,36 @@ state = {
     this.props.dispatch( { type:"DELETEITEM",deleteId:id,deletePrice:price});
   }
   
+  insertUserData = async  ()=> {
+    let dataClient={clientPizzas:this.props.dataPizza,clientSum:this.props.startBasket.startPrice,clientTotalProducts:this.props.startBasket.numberProducts}
+    let userName;
+    do {
+      userName = prompt("Введите ваш логин на английском языке");
+    } while (userName === null || userName === "");
+ console.log(userName)
+var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+let sp = new URLSearchParams();
+sp.append('f', 'INSERT');
+sp.append('n', userName+"_CLIENT_INFO" );
+sp.append('v', JSON.stringify(dataClient));
+
+
+try {
+    let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
+    let data=await response.json();
+    console.log(data);
+    data.result===""?alert("Пользователь под данным логином уже зарегистрирован, попробуйте другой"): alert("Ваш заказ отправлен на сервер!")
+  
+}
+catch ( error ) {
+    console.error(error);
+}
+
+}
+
+  
+  
+  
   render() {
     console.log("render");
     return (
@@ -61,6 +91,7 @@ state = {
         <div className='basket_footer_data'>
           <p>Всего пицц: <span>{this.props.startBasket.numberProducts}</span></p>
           <p>Сумма заказа: <span className='basket_footer_data_price'>{this.props.startBasket.startPrice+" ₽"}</span></p>
+          <button  onClick={this.insertUserData}></button>
         </div>
         </footer>
         </div>
