@@ -19,7 +19,7 @@ class intApp extends React.Component{
     dataReady: false,
     data: "",
     startData:"",
-    newSelectedButton:"",
+    newSelectedButton:1,
     size:"",
     dough:"",
     sortArr:"",
@@ -105,6 +105,7 @@ class intApp extends React.Component{
       }
   }
     render(){     
+      console.log(this.state.newSelectedButton)
     if ( !this.state.dataReady )
     return <div>загрузка данных...</div>;
       return  <div className="wrapper">
@@ -119,6 +120,12 @@ class intApp extends React.Component{
               </div>
             </div>
             </NavLink>
+            <NavLink to="/pizzas/1">
+            <div> 
+            Сюда кликать
+            </div>
+            </NavLink>
+            
             <NavLink to="/basket">
             <Basket price={this.props.startBasket.startPrice} totalProducts={this.props.startBasket.numberProducts}/>
             </NavLink>
@@ -156,7 +163,6 @@ class intApp extends React.Component{
     }
     }
     const mapStateToProps = function (state) {
-      // этому компоненту ничего не нужно из хранилища Redux
       return { 
         startBasket: state.dataPizza.startBasket,
       }; 
