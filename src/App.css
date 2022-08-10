@@ -115,8 +115,24 @@ a{
     display: block;
 }
    }
-   
-
+   .header__page{
+    width: 39px;
+    height: 39px;
+    background-color: orange;
+    color: white;
+    border-radius: 50%;
+    line-height: 39px;
+    text-align: center;
+   }
+   .header__page:hover{
+    background-color: #FE5F1E;;
+    color: #F3F3F3;
+   }
+   .header_pages{
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+   }
 
 
 	

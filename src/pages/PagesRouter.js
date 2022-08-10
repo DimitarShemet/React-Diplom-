@@ -7,6 +7,8 @@ import { createStore, combineReducers } from 'redux';
 import dataPizzaReducer from "./dataPizzaReducer";
 import startBasketReducer from "./startBasketReducer"
 import Page1 from './Page1';
+import Page2 from './Page2';
+import Page3 from './Page3';
 let combinedReducer=combineReducers({
   // редьюсер dataBasketReducer отвечает за раздел state под именем dataPizza
   dataPizza: dataPizzaReducer, 
@@ -25,6 +27,8 @@ class PagesRouter extends React.Component {
         <Route path="/" element={<App/>} />
         <Route path="/basket" element={<Page_Basket/>} />
         <Route path="/pizzas/1" element={<Page1/>} />
+        <Route path="/pizzas/2" element={<Page2/>} />
+        <Route path="/pizzas/3" element={<Page3/>} />
       </Routes>
       </Provider>
     );

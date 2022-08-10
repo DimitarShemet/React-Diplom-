@@ -129,3 +129,28 @@ color: #000000;
     transition: opacity 500ms linear;
   }
   
+  @media (max-width: 700px){
+   .basket_main_header_left{
+    font-size: 28px;
+   }
+   
+}
+@media (max-width: 600px){
+    .basket_main_header_right_delete{
+     font-size: 15px;
+    }
+    .basket_main_header_left{
+        font-size: 24px;
+       }
+       .content {
+        margin: 45px auto;
+    }
+       
+}
+@media (max-width: 510px){
+    
+    .basket_main_header_left{
+        display: block;
+        flex-basis: 130px;
+       }
+}

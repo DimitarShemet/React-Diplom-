@@ -68,5 +68,39 @@ line-height: 27px;
 .pizza_item_delete:hover svg path{
     fill: black;
 }
+@media (max-width: 850px){
+    .pizza_item_number{
+    width: 30px;
+   }
+   .pizza_item_price{
+    font-size: 20px;
+   }
+   .pizza_item_left h2 {
+    font-size: 20px;
+   }
+  
+}
+@media (max-width: 600px){
+    .pizza_item{
+        border-top: 1px solid lightgrey;
+    }
+    .pizza_item_left {
+        display: block;
+        max-width: 170px;
+    }
+   .pizza_item_price{
+    font-size: 18px;
+   }
+   .pizza_item_left h2 {
+    font-size: 18px;
+   }
+}
+@media (max-width: 500px){
+    
+    .pizza_item_left  {
+        max-width: 130px;
+    }
+ }
+ 
 
 

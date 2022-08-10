@@ -120,11 +120,18 @@ class intApp extends React.Component{
               </div>
             </div>
             </NavLink>
-            <NavLink to="/pizzas/1">
-            <div> 
-            Сюда кликать
-            </div>
+             <div className='header_pages'>
+             <NavLink to="/pizzas/1">
+            <div className='header__page'>1</div>
             </NavLink>
+            <NavLink to="/pizzas/2">
+            <div className='header__page'>2</div>
+            </NavLink>
+            <NavLink to="/pizzas/3">
+            <div className='header__page'>3</div>
+            </NavLink>
+            </div>
+           
             
             <NavLink to="/basket">
             <Basket price={this.props.startBasket.startPrice} totalProducts={this.props.startBasket.numberProducts}/>

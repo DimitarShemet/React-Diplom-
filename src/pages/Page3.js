@@ -6,14 +6,13 @@ import './Page1.css';
 import {connect} from 'react-redux';
 import logo from "../img/logo.jpg"; 
 
-class intPage1 extends React.Component{
+class intPage3 extends React.Component{
          
     state = {
         dataReady: false,
         data: "",
         dough:"",
-        currentPizzaData:"",
-        rightdataArr:""
+        currentPizzaData:""
       }
       cbAdd =( newReduxObject)=>{ 
         this.setState({currentPizzaData:newReduxObject})
@@ -33,9 +32,8 @@ class intPage1 extends React.Component{
               let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
               let data=await response.json();
               let dataItem=data.result
-              var obj = JSON.parse(dataItem).splice(0,20)
-              
-              this.setState({dataReady:true, data:obj, dough:obj[0].arrDough});
+              var obj = JSON.parse(dataItem);
+              this.setState({dataReady:true, data:obj.splice(41), dough:obj[0].arrDough});
           }
           catch ( error ) {
               console.error(error);
@@ -68,7 +66,6 @@ class intPage1 extends React.Component{
                   {this.state.data.map(elem=>(
                    <Pizza name={elem.name} key={elem.id} id={elem.id} url={elem.imageUrl} price={elem.price} sizes={elem.sizes}  cbAdd={this.cbAdd} dough={this.state.dough} rating={elem.rating} />
                   ) )}
-                 {}
                 </div>
               </div>
               </div>
@@ -80,6 +77,6 @@ class intPage1 extends React.Component{
           startBasket: state.dataPizza.startBasket,
         }; 
       };
-      const Page1 = connect (mapStateToProps)(intPage1);
+      const Page3 = connect (mapStateToProps)(intPage3);
       
-      export default Page1
+      export default Page3

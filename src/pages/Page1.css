@@ -47,7 +47,6 @@ header{
     color: #7b7b7b;
 }
 .main__items{
-    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
