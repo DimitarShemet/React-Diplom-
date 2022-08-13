@@ -6,6 +6,7 @@
      display: flex;
      align-items: center;
      justify-content: space-evenly;
+     border: none;
 }
 .Basket:hover{
     background-color: #f24500;
@@ -35,5 +36,8 @@ font-size: 16px;
 line-height: 19px;
 color: #FFFFFF;
 margin-left: -13px;
+}
+[aria-current]:last-child{
+    cursor: default;
 }
 

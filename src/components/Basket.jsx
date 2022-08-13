@@ -6,7 +6,7 @@ class Basket extends React.Component {
   render() {
 
     return (
-        <div className="Basket">
+        <button  style={{cursor:this.props.totalProducts?"pointer":'default'}} disabled={this.props.totalProducts?false:true}     className="Basket">
             <div className='Basket__price'>{(this.props.price===0?"":this.props.price)+" ₽"}</div><div className='Basket__line'></div> 
             <svg
                 width="18"
@@ -38,7 +38,7 @@ class Basket extends React.Component {
                 />
               </svg>
               <div className='Basket__sum'> {this.props.totalProducts===0?"":this.props.totalProducts}</div>
-           </div>
+           </button>
     );
 
   }

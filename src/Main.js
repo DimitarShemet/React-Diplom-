@@ -66,7 +66,6 @@ class intMain extends React.Component{
 
     this.setState({currentPizzaData:newReduxObject})
     this.props.dispatch( { type:"ADD", data:newReduxObject });
-    // this.props.dispatch( { type:"STARTBASKETUPDATE", data:newReduxObject })
    }
    cbSort=(sortWord)=>{
     if(sortWord==="Цене"){
@@ -112,9 +111,8 @@ class intMain extends React.Component{
             <div className='header__page'>3</div>
             </NavLink>
             </div>
-           
-            
-            <NavLink to="/basket">
+        
+             <NavLink  to={this.props.startBasket.numberProducts?"/basket":"/"} >
             <Basket price={this.props.startBasket.startPrice} totalProducts={this.props.startBasket.numberProducts}/>
             </NavLink>
       </header>

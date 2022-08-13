@@ -44,7 +44,7 @@ class intPage3 extends React.Component{
             <div className='header__page'>3</div>
             </NavLink>
             </div>
-                    <NavLink to="/basket">
+                    <NavLink to={this.props.startBasket.numberProducts?"/basket":"/pizzas/3"}>
                     <Basket price={this.props.startBasket.startPrice} totalProducts={this.props.startBasket.numberProducts}/>
                     </NavLink>
               </header>

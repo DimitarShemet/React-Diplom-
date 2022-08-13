@@ -14,8 +14,7 @@ class App extends React.Component{
      sortArr:"",
      dataPage1:"",
      dataPage2:"",
-     dataPage3:"",
-     pagesArr:[1,2,3]
+     dataPage3:""
       }
       componentDidMount() {
         this.loadData();
