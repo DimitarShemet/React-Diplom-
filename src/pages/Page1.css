@@ -45,6 +45,10 @@ header{
 }
 .header__logo p {
     color: #7b7b7b;
+    
+}
+.header__logo img{
+    margin-right: 17px;
 }
 .main__items{
     justify-content: space-between;
@@ -52,4 +56,10 @@ header{
 }
 .page_header{
     margin-bottom: 5%;
+}
+@media (max-width: 510px){
+    
+    .header__logo img {
+        display: none;
+    }
 }

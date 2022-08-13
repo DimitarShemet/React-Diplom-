@@ -57,7 +57,10 @@ line-height: 27px;
     background-repeat: no-repeat;
     position: relative;
     cursor: pointer;
-    justify-content: flex-end;
+    justify-content: flex-end;   
+}
+.pizza_item_delete:active{
+    transform: scale(0.97);
 }
 .pizza_item_delete svg{
     position: absolute;
@@ -83,6 +86,11 @@ line-height: 27px;
 @media (max-width: 600px){
     .pizza_item{
         border-top: 1px solid lightgrey;
+       
+    }
+    .pizza_item:last-child{
+        border-bottom: 1px solid lightgrey;
+        padding-bottom: 30px
     }
     .pizza_item_left {
         display: block;
@@ -94,12 +102,32 @@ line-height: 27px;
    .pizza_item_left h2 {
     font-size: 18px;
    }
+   .basket_footer_buttons_back{
+    width: 137px;
+   }
+   .basket_footer_buttons_back_second{
+    display: none;
+   }
+   .basket_footer_buttons_pay_second{
+    display: none;
+   }
+   .basket_footer_buttons_pay{
+    width: 137px;
+   }
 }
 @media (max-width: 500px){
     
     .pizza_item_left  {
         max-width: 130px;
     }
+    .basket_footer_buttons_back{
+        width: 125px;
+        font-size: 14px;
+       }
+       .basket_footer_buttons_pay{
+        width: 125px;
+        font-size: 14px;
+       }
  }
  
 

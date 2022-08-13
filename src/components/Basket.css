@@ -11,6 +11,9 @@
     background-color: #f24500;
     transition: background-color .15s ease-in-out
 }
+.Basket:active{
+    background-color: #c17237 
+}
 .Basket__price{
 font-family: 'Proxima Nova';
 font-style: normal;

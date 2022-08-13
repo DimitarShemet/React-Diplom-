@@ -9,42 +9,16 @@ import logo from "../img/logo.jpg";
 class intPage2 extends React.Component{
          
     state = {
-        dataReady: false,
-        data: "",
-        dough:"",
-        currentPizzaData:""
+      data: this.props.dataPage2,
+      dough:this.props.dough,
+      currentPizzaData:"",
       }
       cbAdd =( newReduxObject)=>{ 
         this.setState({currentPizzaData:newReduxObject})
         this.props.dispatch( { type:"ADD", data:newReduxObject });
        }
-      componentDidMount() {
-        this.loadData();
-      }
-        loadData = async () =>  {
-          var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
-          // отдельно создаём набор POST-параметров запроса
-          let sp = new URLSearchParams();
-          sp.append('f', 'READ');
-          sp.append('n', 'SHEMET_DZMITRY_ARR');
-      
-          try {
-              let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
-              let data=await response.json();
-              let dataItem=data.result
-              var obj = JSON.parse(dataItem).splice(21,20);
-              this.setState({dataReady:true, data:obj, dough:obj[0].arrDough});
-          }
-          catch ( error ) {
-              console.error(error);
-          }
-      }
-     
-    
       render(){  
         console.log(this.state.data)
-        if ( !this.state.dataReady )
-         return <div>загрузка данных...</div>;
         return  (
             <div className="wrapper">
             <div className="inner">
@@ -58,6 +32,17 @@ class intPage2 extends React.Component{
                       </div>
                     </div>
                     </NavLink>
+                    <div className='header_pages'>
+             <NavLink to="/pizzas/1">
+            <div className='header__page'>1</div>
+            </NavLink>
+            <NavLink to="/pizzas/2">
+            <div className='header__page'>2</div>
+            </NavLink>
+            <NavLink to="/pizzas/3">
+            <div className='header__page'>3</div>
+            </NavLink>
+            </div>
                     <NavLink to="/basket">
                     <Basket price={this.props.startBasket.startPrice} totalProducts={this.props.startBasket.numberProducts}/>
                     </NavLink>

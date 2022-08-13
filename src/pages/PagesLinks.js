@@ -9,7 +9,8 @@ class PagesLinks extends React.Component {
 
     return (
       <Fragment>
-        <NavLink to="/"></NavLink>
+        <NavLink to="/" className={obj => ("PageLink"+(obj.isActive?" ActivePageLink":""))}></NavLink>
+       
       </Fragment>
     );
     

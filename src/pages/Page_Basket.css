@@ -128,6 +128,50 @@ color: #000000;
     opacity: 0;
     transition: opacity 500ms linear;
   }
+  .basket_footer_buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 58px;
+    padding-bottom: 50px;
+  }
+  .basket_footer_buttons_back svg{
+    margin-right: 10px;
+  }
+  .basket_footer_buttons_back{
+    background: #FFFFFF;
+    border: 1px solid #D3D3D3;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 15px;
+    height: 54px;
+    width: 190px;
+    color: #c3c3c3;
+    font-weight: 600;
+  }
+  .basket_footer_buttons_back:hover{
+    background-color: #090909;
+    border-color: none;
+    color: white;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out;
+  }
+  .basket_footer_buttons_pay{
+    background: #FE5F1E;
+   border-radius: 30px;
+    height: 54px;
+   color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    width: 190px;
+    padding: 16px;
+    border: 1px solid transparent;
+  }
+  .basket_footer_buttons_pay:active{
+    transform: scale(0.97);
+  }
+  .basket_footer_buttons_pay:hover{
+    background-color: #f24300;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+  }
   
   @media (max-width: 700px){
    .basket_main_header_left{
@@ -145,6 +189,12 @@ color: #000000;
        .content {
         margin: 45px auto;
     }
+    .basket_footer_data p{
+  font-size: 20px;
+    }
+    .basket_main_header_left img{
+      display: none;
+    }
        
 }
 @media (max-width: 510px){
@@ -153,4 +203,12 @@ color: #000000;
         display: block;
         flex-basis: 130px;
        }
+       .basket_footer_data p{
+        font-size: 20px;
+          }
+          .basket_footer_data {
+            display: block;
+            width: 202px;
+            margin: auto;
+          }
 }

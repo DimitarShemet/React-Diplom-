@@ -94,7 +94,18 @@ catch ( error ) {
         <div className='basket_footer_data'>
           <p>Всего пицц: <span>{this.props.startBasket.numberProducts}</span></p>
           <p>Сумма заказа: <span className='basket_footer_data_price'>{this.props.startBasket.startPrice+" ₽"}</span></p>
-          <button  onClick={this.insertUserData}></button>
+        </div>
+        <div className='basket_footer_buttons'>
+        <NavLink to="/">
+          <button className='basket_footer_buttons_back'> 
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+          <span>Вернуться</span> <span className='basket_footer_buttons_back_second'>назад</span>
+          </button>
+          </NavLink>
+          <button className="basket_footer_buttons_pay" onClick={this.insertUserData}><span>Оплатить</span> <span className="basket_footer_buttons_pay_second">сейчас</span>
+          </button>
         </div>
         </footer>
         </div>
