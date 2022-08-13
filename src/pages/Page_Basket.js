@@ -44,9 +44,42 @@ try {
 catch ( error ) {
     console.error(error);
 }
-
+this.setState({update:!this.state.update})
+}
+dataRecovery = async () =>  {
+  let userName;
+  
+    userName = prompt("Корзина была очищена. Для восстановления данных введите логин или нажмите 'Отмена' ");
+   if (userName === null || userName === "")
+   return 
+   else{
+console.log(userName)
+var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+          // отдельно создаём набор POST-параметров запроса
+          let sp = new URLSearchParams();
+          sp.append('f', 'READ');
+          sp.append('n',userName+"_CLIENT_INFO" );
+      
+          try {
+              let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
+              let data=await response.json();
+              let dataItem=data.result
+              var obj = JSON.parse(dataItem);
+               let objData=obj.clientPizzas
+              objData.forEach(elem=>(
+                this.props.dispatch( { type:"ADD", data:elem })
+              ))
+          }
+          catch ( error ) {
+              console.error(error);
+          }
+this.setState({update:!this.state.update})
+        }
 }
   render() {
+    if ( !this.props.startBasket.numberProducts){ 
+      setTimeout(this.dataRecovery, 200); 
+    }
     return (
       <div className="wrapper">
       <div className="inner">

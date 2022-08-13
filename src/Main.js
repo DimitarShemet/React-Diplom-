@@ -63,7 +63,7 @@ class intMain extends React.Component{
  
   
    cbAdd =( newReduxObject)=>{ 
-
+    console.log(newReduxObject)
     this.setState({currentPizzaData:newReduxObject})
     this.props.dispatch( { type:"ADD", data:newReduxObject });
    }

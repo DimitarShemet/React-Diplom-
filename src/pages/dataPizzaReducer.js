@@ -15,14 +15,15 @@ function dataPizzaReducer(state=initState,action) {
 case "ADD": {
   
       let newState={...state};
-      console.log(newState.dataPizza)
       let currentPrice=Number(newState.startBasket.startPrice)
       currentPrice+=Number(action.data.price)
       newState.startBasket.startPrice=currentPrice
-       newState.startBasket.numberProducts++
+      if(newState.startBasket.numberProducts)
+      newState.startBasket.numberProducts++
+      else 
+      newState.startBasket.numberProducts=action.data.numberSelectedPizza
       let startPrice=action.data.price
       let index = newState.dataPizza.findIndex((elem) => elem.id === action.data.id);
-      console.log(index)
        if(index>=0){
        newState.dataPizza[index].numberSelectedPizza++ 
         let currentPrice=startPrice*newState.dataPizza[index].numberSelectedPizza  //Получаем итоговую цену за n кол-во пицц
