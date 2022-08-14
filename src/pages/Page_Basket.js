@@ -69,7 +69,7 @@ var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
               var obj = JSON.parse(dataItem);
                let objData=obj.clientPizzas
               objData.forEach(elem=>(
-                this.props.dispatch( { type:"ADD", data:elem })
+                this.props.dispatch( { type:"ADD", data:elem,from:"ajax" })
               ))
           }
           catch ( error ) {

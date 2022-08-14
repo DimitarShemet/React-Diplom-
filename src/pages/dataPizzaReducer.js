@@ -19,9 +19,17 @@ case "ADD": {
       currentPrice+=Number(action.data.price)
       newState.startBasket.startPrice=currentPrice
       if(newState.startBasket.numberProducts)
+      {if(action.from){
+        newState.startBasket.numberProducts+=Number(action.data.numberSelectedPizza)
+      }
+        else
       newState.startBasket.numberProducts++
-      else 
+      }
+      else {
+        console.log(action.data)
+        console.log(action.data.numberSelectedPizza)
       newState.startBasket.numberProducts=action.data.numberSelectedPizza
+      }
       let startPrice=action.data.price
       let index = newState.dataPizza.findIndex((elem) => elem.id === action.data.id);
        if(index>=0){
