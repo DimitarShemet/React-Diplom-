@@ -64,6 +64,8 @@ var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
               let response=await fetch(ajaxHandlerScript,{ method: 'post', body: sp });
               let data=await response.json();
               let dataItem=data.result
+              if( data.result==="")
+               alert("Логин не найден")
               var obj = JSON.parse(dataItem);
                let objData=obj.clientPizzas
               objData.forEach(elem=>(
