@@ -16,7 +16,6 @@ class Dough extends React.Component{
     
       render(){  
         return  (
- 
    <li  className={this.props.selectedButton===this.props.code?"active":""} onClick={this.buttonDoughClicked} >{this.props.dough} </li> 
     )
       }
