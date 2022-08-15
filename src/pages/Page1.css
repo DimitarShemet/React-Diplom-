@@ -68,7 +68,7 @@ header{
 @media (max-width: 570px){
     .page_header {
         flex-direction:column ;
-        padding-bottom: 43px;
+        padding-bottom: 36px;
     }
     .page_header .header_pages{
         position: static;
