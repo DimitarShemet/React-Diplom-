@@ -57,9 +57,27 @@ header{
 .page_header{
     margin-bottom: 5%;
 }
-@media (max-width: 510px){
+@media (max-width: 945px){
     
-    .header__logo img {
-        display: none;
+ .page_header{
+       padding-bottom:  82px;
     }
+   
 }
+
+@media (max-width: 570px){
+    .page_header {
+        flex-direction:column ;
+        padding-bottom: 43px;
+    }
+    .page_header .header_pages{
+        position: static;
+        margin-top: 38px;
+    }
+    .page_header .Basket{
+        margin: auto;
+    margin-top: 30px;
+    }
+   
+}
+
