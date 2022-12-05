@@ -53,7 +53,6 @@ class App extends React.Component{
      <PagesRouter dataReady={this.state.dataReady} data={this.state.data} startData={this.state.startData} dough={this.state.dough} 
      sortArr={this.state.sortArr} dataPage1={this.state.dataPage1} dataPage2={this.state.dataPage2} dataPage3={this.state.dataPage3} pagesArr={this.state.PagesArr}/>
   </BrowserRouter>
-
    </Fragment>
     )
       }
